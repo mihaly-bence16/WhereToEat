@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 
 android {
     compileSdkVersion 30
@@ -14,6 +16,12 @@ android {
     }
     //Update on solution: Many third party libraries including Retrofit2 use Java 8 language features.
     //The Android Gradle plugin provides built-in support for using certain Java 8 language features.
+
+    //Cannot inline bytecode built with JVM target 1.8 into bytecode that is being built with JVM target 1.6.
+    //Please specify proper '-jvm-target' option
+    kotlinOptions{
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 
     defaultConfig {
         applicationId "com.example.wheretoeat"
@@ -34,6 +42,9 @@ android {
 }
 
 dependencies {
+    //Paging dependency
+    implementation "androidx.paging:paging-runtime:$pagingVersion"
+    //Dagger hilt dependency
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltAndroidXVersion"
@@ -52,6 +63,7 @@ dependencies {
     //Navigation dependency
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.3'
+    //Default
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
