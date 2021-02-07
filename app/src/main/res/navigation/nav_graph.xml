@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_restaurantFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_restaurantFragment_to_fragmentProfile"
+            app:destination="@id/fragmentProfile" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -22,4 +25,18 @@
             android:name="restaurant"
             app:argType="com.example.wheretoeat.data.model.Restaurant" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:name="com.example.wheretoeat.ui.Profile.FragmentProfile"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_fragmentProfile_to_addFragment"
+            app:destination="@id/addFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.example.wheretoeat.ui.Profile.AddFragment"
+        android:label="Add User"
+        tools:layout="@layout/fragment_add" />
 </navigation>
