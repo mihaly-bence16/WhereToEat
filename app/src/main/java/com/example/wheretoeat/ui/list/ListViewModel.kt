@@ -13,7 +13,7 @@ class ListViewModel @ViewModelInject constructor(
 ):ViewModel() {
     private val currentQuery = MutableLiveData(DEFAULT_QUERY)
 
-    val reestaurants = currentQuery.switchMap {
+    val restaurants = currentQuery.switchMap {
         queryString -> repository.getCityResults(queryString).cachedIn(viewModelScope)
     }
 
@@ -22,6 +22,6 @@ class ListViewModel @ViewModelInject constructor(
     }
 
     companion object{
-        private const val DEFAULT_QUERY = "Chicago"
+        private const val DEFAULT_QUERY = ""
     }
 }
