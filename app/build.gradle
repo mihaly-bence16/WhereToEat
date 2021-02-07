@@ -45,6 +45,8 @@ android {
 }
 
 dependencies {
+    //Splash dependency
+    implementation "gr.pantrif:easy-android-splash-screen:0.0.1"
     //Glide dependency
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     //Paging dependency

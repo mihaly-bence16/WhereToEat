@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/image_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:adjustViewBounds="true"
         android:src="@mipmap/ic_launcher_round"
         tools:layout_height="300dp"
@@ -19,6 +19,8 @@
     <TextView
         android:id="@+id/text_view_restaurant_name"
         android:layout_width="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:layout_height="wrap_content"
         android:layout_below="@id/image_view"
         android:layout_marginStart="8dp"
@@ -33,7 +35,7 @@
         android:id="@+id/text_view_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_view_restaurant_name"
+        android:layout_below="@id/text_view_price"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
@@ -42,6 +44,18 @@
         tools:text="Address"
         tools:visibility="visible" />
 
+    <TextView
+        android:id="@+id/text_view_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_view_restaurant_name"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="@android:color/white"
+        android:visibility="gone"
+        tools:text="Price"
+        tools:visibility="visible" />
     <TextView
         android:id="@+id/text_view_city"
         android:layout_width="wrap_content"
@@ -60,7 +74,7 @@
         android:id="@+id/text_view_area"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_view_city"
+        android:layout_below="@id/text_view_state"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
@@ -102,6 +116,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textColor="@android:color/white"
         android:visibility="gone"
         tools:text="Coordinates"
@@ -113,8 +129,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text_view_coordinates"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textColor="@android:color/white"
         android:visibility="gone"
         tools:text="Webpage"
@@ -126,13 +145,29 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text_view_webpage"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="12dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textColor="@android:color/white"
         android:visibility="gone"
         tools:text="Mobile webpage"
         tools:visibility="visible" />
 
+    <TextView
+        android:id="@+id/text_view_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_view_city"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="@android:color/white"
+        android:visibility="gone"
+        tools:text="State"
+        tools:visibility="visible" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -144,13 +179,11 @@
         android:id="@+id/image_view_favorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_mobile_webpage"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="63dp"
         android:layout_marginLeft="63dp"
-        android:layout_marginBottom="175dp"
-        android:baselineAlignBottom="true"
         android:src="@drawable/fav_icon_selector"
         app:tint="@android:color/white" />
 
@@ -158,13 +191,12 @@
         android:id="@+id/image_view_direction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/text_view_mobile_webpage"
+
         android:layout_marginStart="63dp"
         android:layout_marginLeft="63dp"
-        android:layout_marginBottom="175dp"
         android:layout_toEndOf="@+id/image_view_favorite"
         android:layout_toRightOf="@+id/image_view_favorite"
-        android:baselineAlignBottom="true"
         android:src="@drawable/ic_baseline_directions_24"
         app:tint="@android:color/white" />
 
@@ -173,13 +205,12 @@
         android:id="@+id/image_view_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/text_view_mobile_webpage"
         android:layout_marginStart="63dp"
+
         android:layout_marginLeft="63dp"
-        android:layout_marginBottom="175dp"
         android:layout_toEndOf="@+id/image_view_direction"
         android:layout_toRightOf="@+id/image_view_direction"
-        android:baselineAlignBottom="true"
         android:src="@drawable/ic_baseline_local_phone_24"
         app:tint="@android:color/white" />
 
@@ -187,17 +218,16 @@
         android:id="@+id/image_view_others"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_mobile_webpage"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="63dp"
+
         android:layout_marginLeft="63dp"
         android:layout_marginEnd="63dp"
         android:layout_marginRight="63dp"
-        android:layout_marginBottom="175dp"
         android:layout_toEndOf="@+id/image_view_phone"
         android:layout_toRightOf="@+id/image_view_phone"
-        android:baselineAlignBottom="true"
         android:src="@drawable/ic_baseline_other_24"
         app:tint="@android:color/white" />
 </RelativeLayout>

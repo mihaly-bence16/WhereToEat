@@ -7,8 +7,8 @@
     <fragment
         android:id="@+id/restaurantFragment"
         android:name="com.example.wheretoeat.ui.list.RestaurantFragment"
-        android:label="fragment_restaurant_list"
-        tools:layout="@layout/fragment_restaurant_list" >
+        android:label="Restaurants"
+        tools:layout="@layout/fragment_restaurant_list">
         <action
             android:id="@+id/action_restaurantFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
@@ -16,9 +16,10 @@
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.wheretoeat.ui.details.DetailsFragment"
-        android:label="fragment_details"
-        tools:layout="@layout/fragment_details" >
-        <argument android:name="restaurant"
+        android:label="Details"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="restaurant"
             app:argType="com.example.wheretoeat.data.model.Restaurant" />
     </fragment>
 </navigation>
