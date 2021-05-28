@@ -3,12 +3,14 @@ package com.example.wheretoeat.ui.list
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.onNavDestinationSelected
 import androidx.paging.LoadState
 import com.example.wheretoeat.R
 import com.example.wheretoeat.data.model.Restaurant
@@ -84,8 +86,6 @@ class RestaurantFragment : Fragment(R.layout.fragment_restaurant_list),Restauran
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-
-        inflater.inflate(R.menu.menu_list,menu)
 
         val searchCity=menu.findItem(R.id.action_search)
         val searchView=searchCity.actionView as SearchView

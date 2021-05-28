@@ -6,7 +6,7 @@ import retrofit2.http.Query
 interface RatParkApi {
 
     companion object{
-        const val BASE_URL="http://86.120.35.107:1680/"
+        const val BASE_URL="https://ratpark-api.imok.space/"
     }
 
     @GET("restaurants")

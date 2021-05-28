@@ -10,7 +10,7 @@
         app:showAsAction="ifRoom|collapseActionView"
         />
 
-    <item
+    <!--<item
         android:id="@+id/profileFragment"
         android:title="Profile"
         android:menuCategory="secondary"
@@ -21,5 +21,5 @@
         android:menuCategory="secondary"
         android:title="Restaurants"
         app:showAsAction="never"
-        />
+        />-->
 </menu>
