@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_restaurantFragment_to_fragmentProfile"
             app:destination="@id/fragmentProfile" />
+        <action
+            android:id="@+id/action_restaurantFragment_to_favorite_view"
+            app:destination="@id/favorite_view" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -33,10 +36,29 @@
         <action
             android:id="@+id/action_fragmentProfile_to_addFragment"
             app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_fragmentProfile_to_favorite_view"
+            app:destination="@id/favorite_view" />
     </fragment>
     <fragment
         android:id="@+id/addFragment"
         android:name="com.example.wheretoeat.ui.Profile.AddFragment"
         android:label="Add User"
-        tools:layout="@layout/fragment_add" />
+        tools:layout="@layout/fragment_add" >
+        <action
+            android:id="@+id/action_addFragment_to_fragmentProfile"
+            app:destination="@id/fragmentProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/favorite_view"
+        android:name="com.example.wheretoeat.ui.Favorite.FragmentFavorite"
+        android:label="Favorite restaurants"
+        tools:layout="@layout/fragment_favorite_view">
+        <action
+            android:id="@+id/action_favorite_view_to_restaurantFragment"
+            app:destination="@id/restaurantFragment" />
+        <action
+            android:id="@+id/action_favorite_view_to_fragmentProfile"
+            app:destination="@id/fragmentProfile" />
+    </fragment>
 </navigation>

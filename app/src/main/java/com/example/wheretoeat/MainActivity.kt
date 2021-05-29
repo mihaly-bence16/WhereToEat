@@ -35,12 +35,6 @@ class MainActivity : AppCompatActivity() {
         bottomNavView.setupWithNavController(navController)
 
     }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_list,menu)
-        return true
-    }
-
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
