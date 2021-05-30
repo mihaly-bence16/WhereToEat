@@ -6,14 +6,25 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wheretoeat.R
 import com.example.wheretoeat.data.Favorite.Favorite
+import com.example.wheretoeat.data.User.User
 import kotlinx.android.synthetic.main.favorite_view.view.*
 
-class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.MyViewHolder>(){
+class FavoriteAdapter(private val listener: OnItemClickListener) : RecyclerView.Adapter<FavoriteAdapter.MyViewHolder>(){
 
     private var favoriteList = emptyList<Favorite>()
 
-    class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+    inner class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
+        override fun onClick(v: View?) {
+            val position = absoluteAdapterPosition
+            if (position!=RecyclerView.NO_POSITION) {
+                val current =favoriteList[position]
+                listener.onItemClick(current)
+            }
+        }
 
+        init {
+            itemView.setOnClickListener(this)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -34,5 +45,8 @@ class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.MyViewHolder>(){
     fun setData(favorite: List<Favorite>){
         this.favoriteList=favorite
         notifyDataSetChanged()
+    }
+    interface OnItemClickListener{
+        fun onItemClick(favorite: Favorite)
     }
 }

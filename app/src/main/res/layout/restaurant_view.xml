@@ -108,7 +108,7 @@
         android:layout_height="40dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        android:src="@drawable/fav_icon"
+        android:src="@drawable/fav_icon_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:tint="@android:color/white" />

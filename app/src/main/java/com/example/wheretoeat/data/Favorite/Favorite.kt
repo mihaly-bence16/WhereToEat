@@ -10,8 +10,9 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = "favorite_table")
 data class Favorite (
-    @PrimaryKey(autoGenerate = false)
-    val id: String,
+    @PrimaryKey(autoGenerate = true)
+    val id : Int,
+    val restaurant_id: String,
     val name: String,
     val address: String,
     val city: String,

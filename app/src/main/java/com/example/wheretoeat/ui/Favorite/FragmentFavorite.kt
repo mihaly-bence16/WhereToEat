@@ -7,12 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wheretoeat.R
+import com.example.wheretoeat.data.Favorite.Favorite
 import com.example.wheretoeat.data.MyDatabaseViewModel
+import com.example.wheretoeat.data.model.Restaurant
+import com.example.wheretoeat.ui.Favorite.FavoriteAdapter
 import kotlinx.android.synthetic.main.fragment_favorite_view.view.*
 
-class FragmentFavorite : Fragment() {
+class FragmentFavorite : Fragment(), FavoriteAdapter.OnItemClickListener {
 
     private lateinit var myDatabaseViewModel: MyDatabaseViewModel
 
@@ -23,7 +27,7 @@ class FragmentFavorite : Fragment() {
         // Inflate the layout for this fragment
         val view =inflater.inflate(R.layout.fragment_favorite_view, container, false)
 
-        val adapter= FavoriteAdapter()
+        val adapter= FavoriteAdapter(this)
         val recyclerView = view.recycler_view_favorites
         recyclerView.adapter=adapter
 
@@ -39,6 +43,14 @@ class FragmentFavorite : Fragment() {
         })
 
         return view
+    }
+
+    override fun onItemClick(favorite: Favorite) {
+        val restaurant = Restaurant(favorite.restaurant_id,favorite.name,favorite.address,favorite.city,favorite.state,
+            favorite.area,favorite.postal_code,favorite.country,favorite.phone,favorite.lat,favorite.lng,
+            favorite.price,favorite.reserve_url,favorite.mobile_reserve_url,favorite.image_url)
+        val action = FragmentFavoriteDirections.actionFavoriteViewToDetailsFragment(restaurant)
+        findNavController().navigate(action)
     }
 }
 
