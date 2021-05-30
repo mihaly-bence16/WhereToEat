@@ -57,7 +57,7 @@ class MyDatabaseViewModel(application: Application): AndroidViewModel(applicatio
         return result
     }
 
-    fun getCurrentUserid() : LiveData<Int> {
+    fun getCurrentUserId() : LiveData<Int> {
         val result = MutableLiveData<Int>()
         viewModelScope.launch {
             val data = repository.getCurrentUserId()
@@ -70,7 +70,7 @@ class MyDatabaseViewModel(application: Application): AndroidViewModel(applicatio
         viewModelScope.launch(Dispatchers.IO) { repository.addCurrentUser(currentUser) }
     }
 
-    fun deleteCurrentUser(currentUser: CurrentUser){
-        viewModelScope.launch(Dispatchers.IO) { repository.deleteCurrentUser(currentUser) }
+    fun deleteCurrentUser(){
+        viewModelScope.launch(Dispatchers.IO) { repository.deleteCurrentUser() }
     }
 }

@@ -50,7 +50,7 @@ class MyDatabaseRepository(private val userDao: UserDao, private val favoriteDao
         currentUserDao.addCurrentUser(currentUser)
     }
 
-    suspend fun deleteCurrentUser(currentUser: CurrentUser){
-        currentUserDao.deleteCurrentUser(currentUser)
+    suspend fun deleteCurrentUser(){
+        currentUserDao.deleteCurrentUser()
     }
 }
