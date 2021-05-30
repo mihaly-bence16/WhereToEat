@@ -15,15 +15,20 @@ class MyDatabaseRepository(private val userDao: UserDao, private val favoriteDao
     val readAllFavorite : LiveData<List<Favorite>> = favoriteDao.readAllFavorite()
 
     //Favorite
-    suspend fun addFavorite(favorite: Favorite){
+    fun addFavorite(favorite: Favorite){
         favoriteDao.addFavorite(favorite)
     }
 
-    suspend fun deleteFavorite(favorite: Favorite){
-        favoriteDao.deleteFavorite(favorite)
+    suspend fun deleteFavorite(restaurant_id: String, user_id : Int){
+        favoriteDao.deleteFavorite(restaurant_id, user_id)
     }
     fun getCountFavorite() : LiveData<Int > {
         return favoriteDao.getCount()
+    }
+
+    @WorkerThread
+    fun readAllFavoritesByCurrentId(id : Int) : List<Favorite>{
+        return favoriteDao.readAllFavoritesByCurrentId(id)
     }
 
     //User

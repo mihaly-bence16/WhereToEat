@@ -37,16 +37,14 @@ class FragmentProfile : Fragment() , ProfileAdapter.OnItemClickListener{
         myDatabaseViewModel.readAllUsers.observe(viewLifecycleOwner, Observer { user->
             adapter.setData(user)
         })
-        myDatabaseViewModel.getCurrentUserid().observe(viewLifecycleOwner, Observer { returned ->
-            if (returned!=null) {
+        myDatabaseViewModel.getCurrentUserId().observe(viewLifecycleOwner, Observer { returned ->
+            if (returned>0) {
                 myDatabaseViewModel.getUserById(returned)
                     .observe(viewLifecycleOwner, Observer { user ->
                         setTextView(user)
                     })
             }
         })
-
-        /**/
 
         view.floatingActionButton.setOnClickListener{
             findNavController().navigate(R.id.action_fragmentProfile_to_addFragment)
@@ -57,10 +55,11 @@ class FragmentProfile : Fragment() , ProfileAdapter.OnItemClickListener{
     override fun onItemClick(user: User) {
         val date = Date().time
         val currentUser = CurrentUser(0,user.id, date)
+        myDatabaseViewModel.deleteCurrentUser()
         myDatabaseViewModel.addCurrentUser(currentUser)
         setTextView(user)
     }
-    fun setTextView(user: User){
+    private fun setTextView(user: User){
         view?.text_view_FN?.text=user.firstName
         view?.text_view_LN?.text=user.lastName
         view?.text_view_email?.text=user.email

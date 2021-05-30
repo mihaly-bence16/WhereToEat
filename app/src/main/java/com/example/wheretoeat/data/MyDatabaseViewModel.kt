@@ -38,8 +38,17 @@ class MyDatabaseViewModel(application: Application): AndroidViewModel(applicatio
         viewModelScope.launch(Dispatchers.IO) { repository.addFavorite(favorite) }
     }
 
-    fun deleteFavorite(favorite: Favorite) {
-        viewModelScope.launch(Dispatchers.IO) { repository.deleteFavorite(favorite) }
+    fun deleteFavorite(restaurant_id: String, user_id : Int) {
+        viewModelScope.launch(Dispatchers.IO) { repository.deleteFavorite(restaurant_id,user_id) }
+    }
+
+    fun readAllFavoritesByCurrentId(id : Int) : LiveData<List<Favorite>>{
+        val result = MutableLiveData<List<Favorite>>()
+        viewModelScope.launch {
+            val data = repository.readAllFavoritesByCurrentId(id)
+            result.value = data
+        }
+        return result
     }
 
     //user

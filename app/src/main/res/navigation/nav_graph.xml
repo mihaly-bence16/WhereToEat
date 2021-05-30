@@ -27,6 +27,12 @@
         <argument
             android:name="restaurant"
             app:argType="com.example.wheretoeat.data.model.Restaurant" />
+        <action
+            android:id="@+id/action_detailsFragment_to_favorite_view"
+            app:destination="@id/favorite_view" />
+        <action
+            android:id="@+id/action_detailsFragment_to_restaurantFragment"
+            app:destination="@id/restaurantFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentProfile"
@@ -60,5 +66,8 @@
         <action
             android:id="@+id/action_favorite_view_to_fragmentProfile"
             app:destination="@id/fragmentProfile" />
+        <action
+            android:id="@+id/action_favorite_view_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
 </navigation>

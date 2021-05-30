@@ -12,6 +12,6 @@ interface CurrentUserDao {
     @Query("SELECT current_user_id FROM current_user ORDER BY date DESC")
     fun getCurrentId() : Int
 
-    @Delete
-    suspend fun deleteCurrentUser(currentUser: CurrentUser)
+    @Query("DELETE  FROM current_user WHERE id not in(SELECT id FROM current_user ORDER BY date desc LIMIT 1)")
+    suspend fun deleteCurrentUser()
 }
